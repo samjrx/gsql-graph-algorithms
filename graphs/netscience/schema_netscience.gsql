@@ -1,3 +1,4 @@
+DROP GRAPH netscience
 DROP EDGE Coauthorship
 DROP VERTEX Scientist 
 

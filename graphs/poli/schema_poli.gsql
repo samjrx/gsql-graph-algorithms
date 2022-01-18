@@ -1,3 +1,4 @@
+DROP GRAPH econ_poli
 DROP EDGE Capital_Link
 DROP VERTEX Account
 

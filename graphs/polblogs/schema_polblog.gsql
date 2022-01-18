@@ -1,3 +1,4 @@
+DROP GRAPH polblog
 DROP EDGE Cited
 DROP VERTEX Blog
 

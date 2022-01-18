@@ -1,3 +1,4 @@
+DROP GRAPH USairport
 DROP EDGE Flight
 DROP VERTEX Airport
 
