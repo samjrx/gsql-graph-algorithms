@@ -1,0 +1,13 @@
+USE GRAPH web_edu
+DROP JOB  load_web_edu
+
+CREATE LOADING JOB load_web_edu FOR GRAPH web_edu {
+    DEFINE FILENAME efile;
+
+    LOAD efile
+        TO VERTEX Webpage VALUES ($0, $0, _)
+        TO EDGE Hyperlink_to VALUES ($0, $1, _, _)
+        USING header="true";
+        
+}
+#RUN LOADING JOB load_web_edu USING dir_efile="./data/data.csv"

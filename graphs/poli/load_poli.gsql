@@ -1,0 +1,13 @@
+USE GRAPH econ_poli
+DROP JOB  load_econ_poli
+
+CREATE LOADING JOB load_econ_poli FOR GRAPH econ_poli {
+    DEFINE FILENAME efile;
+
+    LOAD efile
+        TO VERTEX Account VALUES ($0, $0, _)
+        TO EDGE Capital_Link VALUES ($0, $1, $2, _)
+        USING header="true";
+        
+}
+#RUN LOADING JOB load_econ_poli USING dir_efile="./data/data.csv"

@@ -1,0 +1,4 @@
+
+CREATE VERTEX Wiki_user (PRIMARY_ID id STRING, ID STRING, label STRING)
+CREATE DIRECTED EDGE Vote_for (FROM Wiki_user, TO Wiki_user, weight FLOAT, similarity FLOAT)
+CREATE GRAPH wiki_vote (Wiki_user, Vote_for)

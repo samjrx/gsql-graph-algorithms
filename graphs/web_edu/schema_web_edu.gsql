@@ -1,0 +1,4 @@
+
+CREATE VERTEX Webpage (PRIMARY_ID id STRING, ID STRING, label STRING)
+CREATE DIRECTED EDGE Hyperlink_to (FROM Webpage, TO Webpage, weight FLOAT, similarity FLOAT)
+CREATE GRAPH web_edu (Webpage, Hyperlink_to)

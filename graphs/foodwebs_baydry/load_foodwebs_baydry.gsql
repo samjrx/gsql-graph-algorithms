@@ -1,0 +1,16 @@
+USE GRAPH fw_baydry
+DROP JOB  load_fw_baydry
+
+CREATE LOADING JOB load_fw_baydry FOR GRAPH fw_baydry {
+    DEFINE FILENAME vfile;
+    DEFINE FILENAME efile;
+
+    LOAD vfile
+        TO VERTEX Species VALUES ($0, $0, $1, $2, _)
+        USING header="true";
+    LOAD efile
+        TO EDGE Energy_Flux VALUES ($0, $1, $2, _)
+        USING header="true";
+        
+}
+#RUN LOADING JOB load_fw_baydry USING dir_efile="./data/data.csv"
