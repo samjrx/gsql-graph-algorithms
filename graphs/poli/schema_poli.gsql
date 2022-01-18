@@ -1,8 +1,8 @@
-DROP JOB  load_econ_poli
-DROP GRAPH econ_poli
+DROP JOB  load_poli
+DROP GRAPH poli
 DROP EDGE Capital_Link
 DROP VERTEX Account
 
 CREATE VERTEX Account (PRIMARY_ID id STRING, ID STRING, label STRING)
 CREATE DIRECTED EDGE Capital_Link (FROM Account, TO Account, weight FLOAT, similarity FLOAT)
-CREATE GRAPH econ_poli (Account, Capital_Link)
+CREATE GRAPH poli (Account, Capital_Link)
