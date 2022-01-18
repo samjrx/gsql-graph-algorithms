@@ -1,3 +1,5 @@
+DROP EDGE Hyperlink_to
+DROP VERTEX Webpage
 
 CREATE VERTEX Webpage (PRIMARY_ID id STRING, ID STRING, label STRING)
 CREATE DIRECTED EDGE Hyperlink_to (FROM Webpage, TO Webpage, weight FLOAT, similarity FLOAT)

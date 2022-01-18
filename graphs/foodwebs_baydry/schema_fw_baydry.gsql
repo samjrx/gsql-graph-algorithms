@@ -1,5 +1,5 @@
-DROP VERTEX Species
 DROP EDGE Energy_Flux
+DROP VERTEX Species
 
 CREATE VERTEX Species (PRIMARY_ID id STRING, name STRING, ECO STRING, Biomass FLOAT, label STRING)
 CREATE DIRECTED EDGE Energy_Flux (FROM Species, TO Species, weight FLOAT, similarity FLOAT)

@@ -1,3 +1,5 @@
+DROP EDGE Coauthorship
+DROP VERTEX Scientist 
 
 CREATE VERTEX Scientist (PRIMARY_ID id STRING, ID STRING, label STRING)
 CREATE UNDIRECTED EDGE Coauthorship (FROM Scientist, TO Scientist, weight FLOAT, similarity FLOAT)

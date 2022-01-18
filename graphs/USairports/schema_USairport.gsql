@@ -1,3 +1,5 @@
+DROP EDGE Flight
+DROP VERTEX Airport
 
 CREATE VERTEX Airport (PRIMARY_ID id STRING, name STRING, City STRING, Position STRING, label STRING)
 CREATE DIRECTED EDGE Flight (FROM Airport, TO Airport, Carrier STRING, Departures INT, Seats INT, Passengers INT, Aircraft STRING, Distance FLOAT, similarity FLOAT)
