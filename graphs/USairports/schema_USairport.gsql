@@ -1,3 +1,4 @@
+DROP JOB  load_USairport
 DROP GRAPH USairport
 DROP EDGE Flight
 DROP VERTEX Airport

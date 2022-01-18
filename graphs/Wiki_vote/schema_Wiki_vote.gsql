@@ -1,3 +1,4 @@
+DROP JOB  load_wiki_vote
 DROP GRAPH wiki_vote
 DROP EDGE Vote_for
 DROP VERTEX Wiki_user

@@ -1,3 +1,4 @@
+DROP JOB  load_fw_baydry
 DROP GRAPH fw_baydry
 DROP EDGE Energy_Flux
 DROP VERTEX Species

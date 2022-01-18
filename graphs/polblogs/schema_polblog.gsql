@@ -1,3 +1,4 @@
+DROP JOB  load_polblog
 DROP GRAPH polblog
 DROP EDGE Cited
 DROP VERTEX Blog

@@ -1,3 +1,4 @@
+DROP JOB  load_web_edu
 DROP GRAPH web_edu
 DROP EDGE Hyperlink_to
 DROP VERTEX Webpage
