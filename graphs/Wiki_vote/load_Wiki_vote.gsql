@@ -6,7 +6,7 @@ CREATE LOADING JOB load_wiki_vote FOR GRAPH wiki_vote {
 
     LOAD efile
         TO VERTEX Wiki_user VALUES ($0, $0, _),
-        TO EDGE Vote_for VALUES ($0, $1, _, _)
+        TO EDGE Vote_for VALUES ($0, $1, 1, _)
         USING header="true";
         
 }
