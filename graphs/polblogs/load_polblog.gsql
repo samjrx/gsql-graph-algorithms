@@ -9,7 +9,7 @@ CREATE LOADING JOB load_polblog FOR GRAPH polblog {
         TO VERTEX Blog VALUES ($0, $1, $2, $3, _)
         USING header="true";
     LOAD efile
-        TO EDGE Cited VALUES ($0, $1, 1, _)
+        TO EDGE Cited VALUES ($0, $1, 1)
         USING header="true";
         
 }
