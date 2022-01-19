@@ -6,7 +6,7 @@ CREATE LOADING JOB load_netscience FOR GRAPH netscience {
 
     LOAD efile
         TO VERTEX Scientist VALUES ($0, $0, _),
-        TO EDGE Coauthorship VALUES ($0, $1, _, _)
+        TO EDGE Coauthorship VALUES ($0, $1, 1, _)
         USING header="true";
         
 }
