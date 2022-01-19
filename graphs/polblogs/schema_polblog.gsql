@@ -4,5 +4,5 @@ DROP EDGE Cited
 DROP VERTEX Blog
 
 CREATE VERTEX Blog (PRIMARY_ID id STRING, url STRING, political_flag INT, source STRING, label STRING)
-CREATE DIRECTED EDGE Cited (FROM Blog, TO Blog, weight FLOAT, similarity FLOAT)
+CREATE DIRECTED EDGE Cited (FROM Blog, TO Blog, weight FLOAT, similarity FLOAT) WITH REVERSE_EDGE="Cited_by"
 CREATE GRAPH polblog (Blog, Cited)

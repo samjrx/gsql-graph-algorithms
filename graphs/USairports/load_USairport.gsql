@@ -9,7 +9,7 @@ CREATE LOADING JOB load_USairport FOR GRAPH USairport {
         TO VERTEX Airport VALUES ($0, $0, $1, $2, _)
         USING header="true";
     LOAD efile
-        TO EDGE Flight VALUES ($0, $1, 1, $2, $3, $4, $5, $6, $7, _)
+        TO EDGE Flight_to VALUES ($0, $1, 1, $2, $3, $4, $5, $6, $7, _)
         USING header="true";
         
 }
