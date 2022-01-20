@@ -5,8 +5,8 @@ DROP GRAPH fw_baydry
 
 CREATE GRAPH fw_baydry ()
 CREATE SCHEMA_CHANGE JOB schema_fw_baydry FOR GRAPH fw_baydry {
-    CREATE VERTEX Species (PRIMARY_ID id STRING, name STRING, ECO STRING, Biomass FLOAT);
-    CREATE DIRECTED EDGE Energy_to (FROM Species, TO Species, weight FLOAT) WITH REVERSE_EDGE="Energy_from";
+    ADD VERTEX Species (PRIMARY_ID id STRING, name STRING, ECO STRING, Biomass FLOAT);
+    ADD DIRECTED EDGE Energy_to (FROM Species, TO Species, weight FLOAT) WITH REVERSE_EDGE="Energy_from";
 }
 
 
