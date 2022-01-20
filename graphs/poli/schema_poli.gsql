@@ -1,8 +1,10 @@
-DROP JOB  load_poli
+USE GRAPH poli
+DROP QUERY ALL
+DROP JOB ALL
 DROP GRAPH poli
-DROP EDGE Link_to
-DROP VERTEX Account
 
-CREATE VERTEX Account (PRIMARY_ID id STRING, ID STRING, label STRING)
-CREATE DIRECTED EDGE Link_to (FROM Account, TO Account, weight FLOAT, similarity FLOAT) WITH REVERSE_EDGE="Link_from"
-CREATE GRAPH poli (Account, Link_to)
+CREATE GRAPH poli ()
+CREATE SCHEMA_CHANGE JOB schema_poli FOR GRAPH poli {
+    ADD VERTEX Account (PRIMARY_ID id STRING, ID STRING);
+    ADD DIRECTED EDGE Link_to (FROM Account, TO Account, weight FLOAT) WITH REVERSE_EDGE="Link_from";
+}

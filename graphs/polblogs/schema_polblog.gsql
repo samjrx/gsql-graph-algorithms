@@ -1,8 +1,10 @@
-DROP JOB  load_polblog
+USE GRAPH polblog
+DROP QUERY ALL
+DROP JOB ALL
 DROP GRAPH polblog
-DROP EDGE Cited
-DROP VERTEX Blog
 
-CREATE VERTEX Blog (PRIMARY_ID id STRING, url STRING, political_flag INT, source STRING, label STRING)
-CREATE DIRECTED EDGE Cited (FROM Blog, TO Blog, weight FLOAT, similarity FLOAT) WITH REVERSE_EDGE="Cited_by"
-CREATE GRAPH polblog (Blog, Cited)
+CREATE GRAPH polblog ()
+CREATE SCHEMA_CHANGE JOB schema_polblog FOR GRAPH polblog {
+    ADD VERTEX Blog (PRIMARY_ID id STRING, url STRING, political_flag INT, source STRING);
+    ADD DIRECTED EDGE Cited (FROM Blog, TO Blog, weight FLOAT) WITH REVERSE_EDGE="Cited_by";
+}
