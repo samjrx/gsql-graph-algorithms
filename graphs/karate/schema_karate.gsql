@@ -5,6 +5,6 @@ DROP GRAPH karate
 
 CREATE GRAPH karate ()
 CREATE SCHEMA_CHANGE JOB schema_karate FOR GRAPH karate {
-    ADD VERTEX Member (PRIMARY_ID id STRING, ID STRING, Name STRING, Faction INT);
+    ADD VERTEX Member (PRIMARY_ID id STRING, ID STRING, Abbr STRING, Faction INT);
     ADD UNDIRECTED EDGE Interact (FROM Member, TO Member, weight FLOAT);
 }
