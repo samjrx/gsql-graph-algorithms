@@ -1,5 +1,5 @@
 "Faction","name","label","color"
-1,"Mr Hi","H",1
+1,"Mr Hi","1",1
 1,"Actor 2","2",1
 1,"Actor 3","3",1
 1,"Actor 4","4",1
@@ -32,4 +32,4 @@
 2,"Actor 31","31",2
 2,"Actor 32","32",2
 2,"Actor 33","33",2
-2,"John A","A",2
+2,"John A","0",2
