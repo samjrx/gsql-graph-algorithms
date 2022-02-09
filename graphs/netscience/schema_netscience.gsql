@@ -1,5 +1,5 @@
 USE GRAPH netscience
-//DROP QUERY ALL
+DROP QUERY ALL
 DROP JOB ALL
 DROP GRAPH netscience
 
