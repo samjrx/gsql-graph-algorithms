@@ -6,7 +6,7 @@ CREATE LOADING JOB load_CAroadnet FOR GRAPH CAroadnet {
 
     LOAD efile
         TO VERTEX Intersection VALUES ($0, $0),
-        TO EDGE Road_to VALUES ($0, $1, 1)
+        TO EDGE Road VALUES ($0, $1, 1)
         USING header="true";
         
 }

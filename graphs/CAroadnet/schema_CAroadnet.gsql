@@ -1,10 +1,10 @@
 USE GRAPH CAroadnet
-DROP QUERY ALL
+//DROP QUERY ALL
 DROP JOB ALL
 DROP GRAPH CAroadnet
 
 CREATE GRAPH CAroadnet ()
 CREATE SCHEMA_CHANGE JOB schema_CAroadnet FOR GRAPH CAroadnet {
     ADD VERTEX Intersection (PRIMARY_ID id STRING, ID STRING);
-    ADD DIRECTED EDGE Road_to (FROM Intersection, TO Intersection, weight FLOAT) WITH REVERSE_EDGE="Road_from";
+    ADD UNDIRECTED EDGE Road (FROM Intersection, TO Intersection, weight FLOAT);
 }
