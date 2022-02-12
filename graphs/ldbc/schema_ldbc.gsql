@@ -1,0 +1,68 @@
+USE GRAPH ldbc_snb
+//DROP QUERY ALL
+DROP JOB ALL
+DROP GRAPH ldbc_snb
+
+CREATE GRAPH ldbc_snb ()
+CREATE SCHEMA_CHANGE JOB schema_ldbc_snb FOR GRAPH ldbc_snb {
+
+    // ADD vertex
+    // message
+    ADD VERTEX Comment (PRIMARY_ID id UINT, id UINT, creationDate DATETIME, locationIP STRING, browserUsed STRING, content STRING, length UINT);
+    ADD VERTEX Post (PRIMARY_ID id UINT, id UINT, imageFile STRING, creationDate DATETIME, locationIP STRING, browserUsed STRING, lang STRING, content STRING, length UINT);
+    // organisation
+    ADD VERTEX Company(PRIMARY_ID id UINT, id UINT, name STRING, url STRING);
+    ADD VERTEX University(PRIMARY_ID id UINT, id UINT, name STRING, url STRING);
+    // place
+    ADD VERTEX City(PRIMARY_ID id UINT, id UINT, name STRING, url STRING);
+    ADD VERTEX Country(PRIMARY_ID id UINT, id UINT, name STRING, url STRING);
+    ADD VERTEX Continent(PRIMARY_ID id UINT, id UINT, name STRING, url STRING);
+    // else
+    ADD VERTEX Forum (PRIMARY_ID id UINT, id UINT, title STRING, creationDate DATETIME);
+    ADD VERTEX Person (PRIMARY_ID id UINT, id UINT, firstName STRING, lastName STRING, gender STRING, birthday DATETIME, creationDate DATETIME, locationIP STRING, browserUsed STRING, speaks set<STRING>, email set<STRING>);
+    ADD VERTEX Tag (PRIMARY_ID id UINT, id UINT, name STRING, url STRING);
+    ADD VERTEX TagClass(PRIMARY_ID id UINT, id UINT, name STRING, url STRING);
+    // ADD edge
+    // contianerOf
+    ADD DIRECTED EDGE Forum_CONTAINER_OF_Post (FROM Forum, TO Post) WITH REVERSE_EDGE=“Forum_CONTAINER_OF_Post_REVERSE”;
+    // hasCreator
+    ADD DIRECTED EDGE Comment_HAS_CREATOR_Person (FROM Comment, TO Person) WITH REVERSE_EDGE=“Comment_HAS_CREATOR_Person_REVERSE”;
+    ADD DIRECTED EDGE Post_HAS_CREATOR_Person (FROM Post, TO Person) WITH REVERSE_EDGE=“Post_HAS_CREATOR_Person_REVERSE”;
+    // hasInterest
+    ADD DIRECTED EDGE Person_HAS_INTEREST_Tag (FROM Person, TO Tag) WITH REVERSE_EDGE=“Person_HAS_INTEREST_Tag_REVERSE”;
+    // hasMember
+    ADD DIRECTED EDGE Forum_HAS_MEMBER_Person (FROM Forum, TO Person, joinDate DATETIME) WITH REVERSE_EDGE=“Forum_HAS_MEMBER_Person_REVERSE”;
+    // hasModerator
+    ADD DIRECTED EDGE Forum_HAS_MODERATOR_Person (FROM Forum, TO Person) WITH REVERSE_EDGE=“Forum_HAS_MODERATOR_Person_REVERSE”;
+    // hasTag
+    ADD DIRECTED EDGE Comment_HAS_TAG_Tag (FROM Comment, TO Tag) WITH REVERSE_EDGE=“Comment_HAS_TAG_Tag_REVERSE”;
+    ADD DIRECTED EDGE Post_HAS_TAG_Tag (FROM Post, TO Tag) WITH REVERSE_EDGE=“Post_HAS_TAG_Tag_REVERSE”;
+    ADD DIRECTED EDGE Forum_HAS_TAG_Tag (FROM Forum, TO Tag) WITH REVERSE_EDGE=“Forum_HAS_TAG_Tag_REVERSE”;
+    // hasType
+    ADD DIRECTED EDGE Tag_HAS_TYPE_TagClass (FROM Tag, TO TagClass) WITH REVERSE_EDGE=“Tag_HAS_TYPE_TagClass_REVERSE”;
+    // isLocatedIn
+    ADD DIRECTED EDGE Company_IS_LOCATED_IN_Country(FROM Company, TO Country) WITH REVERSE_EDGE=“Company_IS_LOCATED_IN_Country_REVERSE”;
+    ADD DIRECTED EDGE Comment_IS_LOCATED_IN_Country(FROM Comment, TO Country) WITH REVERSE_EDGE=“Comment_IS_LOCATED_IN_Country_REVERSE”;
+    ADD DIRECTED EDGE Post_IS_LOCATED_IN_Country(FROM Post, TO Country) WITH REVERSE_EDGE=“Post_IS_LOCATED_IN_Country_REVERSE”;
+    ADD DIRECTED EDGE Person_IS_LOCATED_IN_City(FROM Person, TO City) WITH REVERSE_EDGE=“Person_IS_LOCATED_IN_City_REVERSE”;
+    ADD DIRECTED EDGE University_IS_LOCATED_IN_City(FROM University, TO City) WITH REVERSE_EDGE=“University_IS_LOCATED_IN_City_REVERSE”;
+    // isPartOf
+    ADD DIRECTED EDGE City_IS_PART_OF_Country(FROM City, TO Country) WITH REVERSE_EDGE=“City_IS_PART_OF_Country_REVERSE”;
+    ADD DIRECTED EDGE Country_IS_PART_OF_Continent(FROM Country, TO Continent) WITH REVERSE_EDGE=“Country_IS_PART_OF_Continent_REVERSE”;
+    // isSubclassOf
+    ADD DIRECTED EDGE TagClass_IS_SUBCLASS_OF_TagClass (FROM TagClass, TO TagClass) WITH REVERSE_EDGE=“TagClass_IS_SUBCLASS_OF_TagClass_REVERSE”;
+    // knows
+    ADD DIRECTED EDGE Person_KNOWS_Person (FROM Person, TO Person, creationDate DATETIME) WITH REVERSE_EDGE=“Person_KNOWS_Person_REVERSE”;
+    // likes
+    ADD DIRECTED EDGE Person_LIKES_Comment (FROM Person, TO Comment, creationDate DATETIME) WITH REVERSE_EDGE=“Person_LIKES_Comment_REVERSE”;
+    ADD DIRECTED EDGE Person_LIKES_Post (FROM Person, TO Post, creationDate DATETIME) WITH REVERSE_EDGE=“Person_LIKES_Post_REVERSE”;
+    // replyOf
+    ADD DIRECTED EDGE Comment_REPLY_OF_Comment (FROM Comment, TO Comment) WITH REVERSE_EDGE=“Comment_REPLY_OF_Comment_REVERSE”;
+    ADD DIRECTED EDGE Comment_REPLY_OF_Post (FROM Comment, TO Post) WITH REVERSE_EDGE=“Comment_REPLY_OF_Post_REVERSE”;
+    // studyAt
+    ADD DIRECTED EDGE Person_STUDY_AT_University (FROM Person, TO University, classYear INT) WITH REVERSE_EDGE=“Person_STUDY_AT_University_REVERSE”;
+    // workAt
+    ADD DIRECTED EDGE Person_WORK_AT_Company (FROM Person, TO Company, workFrom INT) WITH REVERSE_EDGE=“Person_WORK_AT_Company_REVERSE”;
+
+}
+
